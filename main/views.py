@@ -16,11 +16,11 @@ class Index(ListView):
     model = models.Question
     template_name = 'main/index.html'
 
-class Question(PermissionRequiredMixin, SingleObjectMixin, FormView):
+class Question(SingleObjectMixin, FormView):
     model = models.Question
     template_name = 'main/question.html'
     form_class = forms.AnswerForm
-    permission_required = 'add_answer'
+    # permission_required = ('main.view_question')
 
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
